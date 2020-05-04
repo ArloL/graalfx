@@ -1,0 +1,24 @@
+[
+{
+  "name":"com.sun.glass.ui.Application",
+  "methods":[
+    {"name":"notifyDidBecomeActive","parameterTypes":[] }, 
+    {"name":"notifyDidFinishLaunching","parameterTypes":[] }, 
+    {"name":"notifyOpenFiles","parameterTypes":["java.lang.String[]"] }, 
+    {"name":"notifyWillBecomeActive","parameterTypes":[] }, 
+    {"name":"notifyWillFinishLaunching","parameterTypes":[] }
+  ]
+},
+{
+  "name":"com.sun.glass.ui.mac.MacApplication",
+  "methods":[{"name":"setEventThread","parameterTypes":[] }]
+},
+{
+  "name":"java.lang.Class",
+  "methods":[{"name":"forName","parameterTypes":["java.lang.String","boolean","java.lang.ClassLoader"] }]
+},
+{
+  "name":"java.lang.Runnable",
+  "methods":[{"name":"run","parameterTypes":[] }]
+}
+]

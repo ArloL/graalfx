@@ -1,0 +1,17 @@
+[
+{
+  "name":"com.sun.glass.ui.Application"
+},
+{
+  "name":"com.sun.glass.ui.mac.MacApplication"
+},
+{
+  "name":"io.github.arlol.graalfx.GraalFX"
+},
+{
+  "name":"java.lang.Runnable"
+},
+{
+  "name":"java.lang.String"
+}
+]
