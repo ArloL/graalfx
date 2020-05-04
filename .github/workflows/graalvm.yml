@@ -74,7 +74,7 @@ jobs:
         call "%JAVA_HOME%\bin\gu" install native-image
         call "%VCVARS_BAT%"
         call .\mvnw --batch-mode --settings .\.mvn\github-actions-windows-maven-settings.xml package
-        upx --brute target/graalfx-windows-*
+        upx --brute target/graalfx-win-*
         mkdir target\artifacts
         copy target\graalfx-* target\artifacts
     - uses: actions/upload-artifact@v1
