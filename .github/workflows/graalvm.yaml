@@ -23,7 +23,7 @@ jobs:
         upx --brute target/graalfx-mac-*
         mkdir target/artifacts
         cp target/graalfx-* target/artifacts
-    - uses: actions/upload-artifact@v1
+    - uses: actions/upload-artifact@v4
       with:
         name: graalfx artifacts from ${{runner.os}} build
         path: target/artifacts
@@ -48,7 +48,7 @@ jobs:
         upx --brute target/graalfx-linux-*
         mkdir target/artifacts
         cp target/graalfx-* target/artifacts
-    - uses: actions/upload-artifact@v1
+    - uses: actions/upload-artifact@v4
       with:
         name: graalfx artifacts from ${{runner.os}} build
         path: target/artifacts
@@ -77,7 +77,7 @@ jobs:
         upx --brute target/graalfx-win-*
         mkdir target\artifacts
         copy target\graalfx-* target\artifacts
-    - uses: actions/upload-artifact@v1
+    - uses: actions/upload-artifact@v4
       with:
         name: graalfx artifacts from ${{runner.os}} build
         path: target/artifacts
