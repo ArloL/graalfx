@@ -5,7 +5,7 @@ jobs:
   macos:
     runs-on: macos-latest
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v4
     - name: Cache Maven packages
       uses: actions/cache@v1
       with:
@@ -30,7 +30,7 @@ jobs:
   ubuntu:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v4
     - name: Cache Maven packages
       uses: actions/cache@v1
       with:
@@ -57,7 +57,7 @@ jobs:
     env:
       VCVARS_BAT: C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\vcvars64.bat
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v4
     - run: choco install graalvm --version=20.0.0 --no-progress
     - run: choco install upx --version=3.96 --no-progress
     - name: Cache Maven packages
