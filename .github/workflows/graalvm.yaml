@@ -7,7 +7,7 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: Cache Maven packages
-      uses: actions/cache@v1
+      uses: actions/cache@v3
       with:
         path: ~/.m2
         key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
@@ -32,7 +32,7 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: Cache Maven packages
-      uses: actions/cache@v1
+      uses: actions/cache@v3
       with:
         path: ~/.m2
         key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
@@ -61,7 +61,7 @@ jobs:
     - run: choco install graalvm --version=20.0.0 --no-progress
     - run: choco install upx --version=3.96 --no-progress
     - name: Cache Maven packages
-      uses: actions/cache@v1
+      uses: actions/cache@v3
       with:
         path: .m2
         key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
