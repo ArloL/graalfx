@@ -252,6 +252,21 @@
 					</execution>
 				</executions>
 			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>exec-maven-plugin</artifactId>
+				<version>3.1.1</version>
+				<configuration>
+					<mainClass>${start-class}</mainClass>
+					<executable>${env.JAVA_HOME}/bin/java</executable>
+					<arguments>
+						<argument>-agentlib:native-image-agent=config-merge-dir=./src/main/resources/META-INF/native-image</argument>
+						<argument>-classpath</argument>
+						<classpath />
+						<argument>${start-class}</argument>
+					</arguments>
+				</configuration>
+			</plugin>
 		</plugins>
 		<pluginManagement>
 			<plugins>
