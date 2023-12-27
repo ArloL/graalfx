@@ -1,36 +1,8 @@
 {
   "resources":{
-  "includes":[{
-    "pattern":"\\QMETA-INF/services/java.lang.System$LoggerFinder\\E"
-  }, {
-    "pattern":"\\QMETA-INF/services/java.time.zone.ZoneRulesProvider\\E"
-  }, {
-    "pattern":"\\QMETA-INF/services/java.util.spi.ResourceBundleControlProvider\\E"
-  }, {
-    "pattern":"\\Qcom/sun/glass/utils/NativeLibLoader.class\\E"
-  }, {
-    "pattern":"\\Qcom/sun/javafx/scene/control/skin/modena/modena.bss\\E"
-  }, {
-    "pattern":"\\Qcom/sun/prism/es2/glsl/FillPgram_Color.frag\\E"
-  }, {
-    "pattern":"\\Qcom/sun/prism/es2/glsl/Solid_TextureFirstPassLCD.frag\\E"
-  }, {
-    "pattern":"\\Qcom/sun/prism/es2/glsl/Solid_TextureRGB.frag\\E"
-  }, {
-    "pattern":"\\Qcom/sun/prism/es2/glsl/Solid_TextureSecondPassLCD.frag\\E"
-  }, {
-    "pattern":"\\Qcom/sun/prism/es2/glsl/Texture_Color.frag\\E"
-  }, {
-    "pattern":"\\Qlibglass.dylib\\E"
-  }, {
-    "pattern":"\\Qlibjavafx_font.dylib\\E"
-  }, {
-    "pattern":"\\Qlibprism_es2.dylib\\E"
-  }, {
-    "pattern":"java.base:\\Qjdk/internal/icu/impl/data/icudt72b/ubidi.icu\\E"
-  }]},
+  "includes":[]},
   "bundles":[{
-    "name":"com.sun.javafx.tk.quantum.QuantumMessagesBundle",
-    "locales":[""]
-  }]
+      "name":"com.sun.javafx.tk.quantum.QuantumMessagesBundle",
+      "locales":[""]
+    }]
 }
