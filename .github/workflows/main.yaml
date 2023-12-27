@@ -6,7 +6,6 @@ on:
   - cron: '13 23 4 * *'
 env:
   ARTIFACT: graalfx
-  GRAALVM_VERSION: 22.2.0
   JAVA_VERSION: 17
 
 jobs:
@@ -69,13 +68,9 @@ jobs:
       REVISION: ${{ needs.version.outputs.new_version }}
     steps:
     - uses: actions/checkout@v4.1.1
-    - uses: graalvm/setup-graalvm@v1.1.5
-      with:
-        version: ${{ env.GRAALVM_VERSION }}
-        java-version: ${{ env.JAVA_VERSION }}
-        components: 'native-image'
-        github-token: ${{ secrets.GITHUB_TOKEN }}
-        cache: 'maven'
+    - uses: gluonhq/setup-graalvm@master
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - name: Build with Maven
       run: |
         set -o xtrace
@@ -83,7 +78,7 @@ jobs:
           --batch-mode \
           -Dsha1="${GITHUB_SHA}" \
           -Drevision="${REVISION}" \
-          verify
+          verify gluonfx:build gluonfx:package
     - name: Test executable
       run: sh ./src/test/native/test-executable.sh "${{ env.ARTIFACT }}" macos "${{ env.REVISION }}"
     - name: Move artifacts
@@ -103,13 +98,11 @@ jobs:
       REVISION: ${{ needs.version.outputs.new_version }}
     steps:
     - uses: actions/checkout@v4.1.1
-    - uses: graalvm/setup-graalvm@v1.1.5
-      with:
-        version: ${{ env.GRAALVM_VERSION }}
-        java-version: ${{ env.JAVA_VERSION }}
-        components: 'native-image'
-        github-token: ${{ secrets.GITHUB_TOKEN }}
-        cache: 'maven'
+    - uses: gluonhq/setup-graalvm@master
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: Install libraries
+      run: sudo apt-get update && sudo apt-get install libasound2-dev libavcodec-dev libavformat-dev libavutil-dev libgl-dev libgtk-3-dev libpango1.0-dev libxtst-dev
     - name: Build with Maven
       run: |
         set -o xtrace
@@ -117,7 +110,7 @@ jobs:
           --batch-mode \
           -Dsha1="${GITHUB_SHA}" \
           -Drevision="${REVISION}" \
-          verify
+          verify gluonfx:build gluonfx:package
     - name: Test executable
       run: sh ./src/test/native/test-executable.sh "${{ env.ARTIFACT }}" linux "${{ env.REVISION }}"
     - name: Move artifacts
@@ -137,18 +130,14 @@ jobs:
       REVISION: ${{ needs.version.outputs.new_version }}
     steps:
     - uses: actions/checkout@v4.1.1
-    - uses: graalvm/setup-graalvm@v1.1.5
-      with:
-        version: ${{ env.GRAALVM_VERSION }}
-        java-version: ${{ env.JAVA_VERSION }}
-        components: 'native-image'
-        github-token: ${{ secrets.GITHUB_TOKEN }}
-        cache: 'maven'
+    - uses: gluonhq/setup-graalvm@master
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - name: Remove WindowsImageHeapProviderFeature
       run: '& 7z d "$env:JAVA_HOME\lib\svm\builder\svm.jar" com/oracle/svm/core/windows/WindowsImageHeapProviderFeature.class'
     - name: Build with Maven
       run: |
-        .\mvnw --batch-mode -Dsha1="$env:GITHUB_SHA" -Drevision="$env:REVISION" verify
+        .\mvnw --batch-mode -Dsha1="$env:GITHUB_SHA" -Drevision="$env:REVISION" verify gluonfx:build gluonfx:package
     - name: Test executable
       run: sh ./src/test/native/test-executable.sh "${{ env.ARTIFACT }}" windows "${{ env.REVISION }}"
     - name: Move artifacts
