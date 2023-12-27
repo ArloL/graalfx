@@ -153,19 +153,19 @@
 				</configuration>
 			</plugin>
 			<plugin>
-                <groupId>com.gluonhq</groupId>
-                <artifactId>gluonfx-maven-plugin</artifactId>
-                <version>1.0.22</version>
-                <configuration>
-                    <target>${gluonfx.target}</target>
-                    <mainClass>${start-class}</mainClass>
+				<groupId>com.gluonhq</groupId>
+				<artifactId>gluonfx-maven-plugin</artifactId>
+				<version>1.0.22</version>
+				<configuration>
+					<target>${gluonfx.target}</target>
+					<mainClass>${start-class}</mainClass>
 					<releaseConfiguration>
 						<skipSigning>true</skipSigning>
 						<description>appDescription</description>
 						<vendor>vendor</vendor>
 					</releaseConfiguration>
-                </configuration>
-            </plugin>
+				</configuration>
+			</plugin>
 			<plugin>
 				<groupId>net.revelc.code.formatter</groupId>
 				<artifactId>formatter-maven-plugin</artifactId>
