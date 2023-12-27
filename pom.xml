@@ -189,6 +189,15 @@
 					<mainClass>${start-class}</mainClass>
 				</configuration>
 			</plugin>
+			<plugin>
+                <groupId>com.gluonhq</groupId>
+                <artifactId>gluonfx-maven-plugin</artifactId>
+                <version>1.0.22</version>
+                <configuration>
+                    <target>${gluonfx.target}</target>
+                    <mainClass>${start-class}</mainClass>
+                </configuration>
+            </plugin>
 
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
