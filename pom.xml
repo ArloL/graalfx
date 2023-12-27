@@ -159,6 +159,11 @@
                 <configuration>
                     <target>${gluonfx.target}</target>
                     <mainClass>${start-class}</mainClass>
+					<releaseConfiguration>
+						<skipSigning>true</skipSigning>
+						<description>appDescription</description>
+						<vendor>vendor</vendor>
+					</releaseConfiguration>
                 </configuration>
             </plugin>
 			<plugin>
