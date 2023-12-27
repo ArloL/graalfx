@@ -90,7 +90,10 @@ jobs:
     - name: Move artifacts
       run: |
         mkdir target/artifacts
-        cp target/${{ env.ARTIFACT }}-* target/artifacts
+        cp "target/gluonfx/x86_64-darwin/${ARTIFACT}" "target/artifacts/${ARTIFACT}-darwin-${REVISION}"
+        mkdir -p "target/gluonfx/x86_64-darwin/${ARTIFACT}.app/Contents/Resources/bin"
+        cp "./src/main/packaging/macos/graalfx.sh" "target/gluonfx/x86_64-darwin/${ARTIFACT}.app/Contents/Resources/bin"
+        cp -r "target/gluonfx/x86_64-darwin/${ARTIFACT}.app" "target/artifacts/"
     - uses: actions/upload-artifact@v4.0.0
       with:
         name: ${{ env.ARTIFACT }}-${{ github.job }}-${{ needs.version.outputs.new_version }}
@@ -128,7 +131,7 @@ jobs:
     - name: Move artifacts
       run: |
         mkdir target/artifacts
-        cp target/${{ env.ARTIFACT }}-* target/artifacts
+        cp "target/gluonfx/x86_64-linux/${ARTIFACT}" "target/artifacts/${ARTIFACT}-linux-${REVISION}"
     - uses: actions/upload-artifact@v4.0.0
       with:
         name: ${{ env.ARTIFACT }}-${{ github.job }}-${{ needs.version.outputs.new_version }}
@@ -161,7 +164,7 @@ jobs:
     - name: Move artifacts
       run: |
         mkdir target/artifacts
-        copy target/${{ env.ARTIFACT }}-* target/artifacts
+        copy "target\gluonfx\x86_64-windows\$env:ARTIFACT.exe" "target\artifacts\$env:ARTIFACT-windows-$env:REVISION.exe"
     - uses: actions/upload-artifact@v4.0.0
       with:
         name: ${{ env.ARTIFACT }}-${{ github.job }}-${{ needs.version.outputs.new_version }}
@@ -181,6 +184,8 @@ jobs:
     - name: Build project
       working-directory: target
       run: |
+        chmod +x ${{ env.ARTIFACT }}-macos-${{ needs.version.outputs.new_version }}/${{ env.ARTIFACT }}.app/Contents/MacOS/${{ env.ARTIFACT }}
+        chmod +x ${{ env.ARTIFACT }}-macos-${{ needs.version.outputs.new_version }}/${{ env.ARTIFACT }}.app/Contents/Resources/bin/*
         zip -r windows.zip ${{ env.ARTIFACT }}-windows-${{ needs.version.outputs.new_version }}/
         zip -r linux.zip ${{ env.ARTIFACT }}-linux-${{ needs.version.outputs.new_version }}/
         zip -r macos.zip ${{ env.ARTIFACT }}-macos-${{ needs.version.outputs.new_version }}/
@@ -231,7 +236,7 @@ jobs:
       uses: shogo82148/actions-upload-release-asset@v1.7.2
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ./target/${{ env.ARTIFACT }}-macos-${{ needs.version.outputs.new_version }}/${{ env.ARTIFACT }}-macos-${{ needs.version.outputs.new_version }}
+        asset_path: ./target/${{ env.ARTIFACT }}-macos-${{ needs.version.outputs.new_version }}/${{ env.ARTIFACT }}-darwin-${{ needs.version.outputs.new_version }}
         asset_name: ${{ env.ARTIFACT }}-macos
         asset_content_type: application/octet-stream
     - uses: eregon/publish-release@v1.0.5
