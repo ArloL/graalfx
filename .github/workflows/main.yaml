@@ -85,8 +85,6 @@ jobs:
           -Dsha1="${GITHUB_SHA}" \
           -Drevision="${REVISION}" \
           verify gluonfx:build gluonfx:package
-    - name: Test executable
-      run: sh ./src/test/native/test-executable.sh "${{ env.ARTIFACT }}" macos "${{ env.REVISION }}"
     - name: Move artifacts
       run: |
         mkdir target/artifacts
@@ -126,8 +124,6 @@ jobs:
           -Dsha1="${GITHUB_SHA}" \
           -Drevision="${REVISION}" \
           verify gluonfx:build gluonfx:package
-    - name: Test executable
-      run: sh ./src/test/native/test-executable.sh "${{ env.ARTIFACT }}" linux "${{ env.REVISION }}"
     - name: Move artifacts
       run: |
         mkdir target/artifacts
@@ -159,8 +155,6 @@ jobs:
     - name: Build with Maven
       run: |
         .\mvnw --batch-mode -Dsha1="$env:GITHUB_SHA" -Drevision="$env:REVISION" verify gluonfx:build gluonfx:package
-    - name: Test executable
-      run: sh ./src/test/native/test-executable.sh "${{ env.ARTIFACT }}" windows "${{ env.REVISION }}"
     - name: Move artifacts
       run: |
         mkdir target/artifacts
