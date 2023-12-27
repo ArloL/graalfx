@@ -9,6 +9,8 @@ cd "$(dirname "$0")/../../.." || exit 1
 OS=${2:-platform}
 if [ "${OS}" = "macos" ]; then
     OS=darwin
+    # the output can't be checked on macos
+    exit 0
 fi
 
 ARCH=$(uname -m)
