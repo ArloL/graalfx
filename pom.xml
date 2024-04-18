@@ -34,7 +34,7 @@
 		<revision>0.0.1-SNAPSHOT</revision>
 		<platform>unknown</platform>
 		<start-class>io.github.arlol.graalfx.Launcher</start-class>
-		<javafx.version>22</javafx.version>
+		<javafx.version>22.0.1</javafx.version>
 	</properties>
 
 	<profiles>
